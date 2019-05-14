@@ -1,0 +1,44 @@
+AL EJECUTAR LA RASPBERRY - EJECUTAR LOS SIGUIENTES COMANDOS
+-------------------------------------------------------------------------------------
+export AWS_DEFAULT_REGION=eu-west-1
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-armhf/
+export AWS_ACCESS_KEY_ID=AKIAY3YFTIQINJCK7D23
+export AWS_SECRET_ACCESS_KEY=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
+aws rekognition start-stream-processor --name FacialRecognitionStreamProcessor
+sudo modprobe bcm2835-v4l2
+-------------------------------------------------------------------------------------
+
+
+
+ANTES DE PARAR LA RASPBERRY - EJECUTAR LOS SIGUIENTES COMANDOS
+-------------------------------------------------------------------------------------
+aws rekognition stop-stream-processor --name FacialRecognitionStreamProcessor
+-------------------------------------------------------------------------------------
+
+
+
+EJECUTAR EL PRODUCTOR DE DATOS A KINESIS VIDEO STREAM
+-------------------------------------------------------------------------------------
+cd amazon-kinesis-video-streams-producer-sdk-cpp/kinesis-video-native-build/
+./kinesis_video_gstreamer_sample_app PiStream -w 640 -h 480 -f 15
+-------------------------------------------------------------------------------------
+
+
+
+COMANDOS DE AYUDA
+-------------------------------------------------------------------------------------
+aws rekognition list-stream-processors
+aws rekognition describe-stream-processor --name FacialRecognitionStreamProcessor
+
+./kinesis_video_gstreamer_sample_app -w <width> -h <height> -f <framerate>
+                    -b <bitrateInKBPS> Stream Name
+
+-------------------------------------------------------------------------------------
+
+
+
+
+aws rekognition index-faces --collection-id faces --image '{"S3Object":{"Bucket":"users.pgytic.esiiab.com","Name":"hernanpelucas/0.jpg"}}' --external-image-id hernanpelucas-0
+
+
+aws kinesis register-stream-consumer --consumer-name lambda-consumer --stream-arn arn:aws:kinesis:eu-west-1:609360233488:stream/FacialRecognition
