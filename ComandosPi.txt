@@ -2,8 +2,8 @@ AL EJECUTAR LA RASPBERRY - EJECUTAR LOS SIGUIENTES COMANDOS
 -------------------------------------------------------------------------------------
 export AWS_DEFAULT_REGION=eu-west-1
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-armhf/
-export AWS_ACCESS_KEY_ID=AKIAY3YFTIQINJCK7D23
-export AWS_SECRET_ACCESS_KEY=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
+export AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXXX
+export AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 aws rekognition start-stream-processor --name FacialRecognitionStreamProcessor
 sudo modprobe bcm2835-v4l2
 -------------------------------------------------------------------------------------
